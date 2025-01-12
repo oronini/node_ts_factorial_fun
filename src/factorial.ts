@@ -30,8 +30,17 @@ const main = async () => {
   try {
     while (true) {
       const input = await new Promise<string>((resolve) => {
-        rl.question('正整数Nを入力してください。: ', resolve);
+        rl.question(
+          '正整数Nを入力してください。（終了する場合は「e」を入力）: ',
+          resolve
+        );
       });
+
+      // 終了コマンド入力時の処理
+      if (input.toLowerCase() === 'e') {
+        console.log('プログラムを終了します。');
+        break;
+      }
 
       const num = parseInt(input);
 
